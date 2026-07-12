@@ -1,0 +1,66 @@
+# Global Intraday Liquidity Predictor — Configuration
+
+project:
+  name: "Global Intraday Liquidity Predictor & Stress Tester"
+  horizon_hours: 48
+  currencies: ["CHF", "USD", "EUR"]
+  refresh_interval_seconds: 300
+
+# Simulated legacy system identifiers
+systems:
+  credit_suisse_legacy:
+    id: "CS_LEGACY"
+    region: "EMEA"
+    migration_status: "partial"  # Switzerland migrated Mar 2026; global infra still overlapping
+  ubs:
+    id: "UBS_CORE"
+    region: "GLOBAL"
+
+# Liquidity thresholds (millions, per currency)
+thresholds:
+  CHF:
+    warning_buffer_pct: 15
+    critical_buffer_pct: 8
+    min_liquid_assets_m: 5000
+  USD:
+    warning_buffer_pct: 12
+    critical_buffer_pct: 6
+    min_liquid_assets_m: 8000
+  EUR:
+    warning_buffer_pct: 12
+    critical_buffer_pct: 6
+    min_liquid_assets_m: 6000
+
+# Model ensemble weights
+models:
+  random_forest:
+    n_estimators: 200
+    max_depth: 12
+    weight: 0.45
+  time_series:
+    arima_order: [2, 1, 2]
+    weight: 0.55
+
+# Stress test scenarios (bank-run severity multipliers on withdrawal velocity)
+stress_scenarios:
+  negative_news:
+    withdrawal_velocity_multiplier: 2.5
+    margin_call_spike_pct: 40
+    interbank_spread_widen_bps: 75
+  market_shock:
+    withdrawal_velocity_multiplier: 4.0
+    margin_call_spike_pct: 80
+    interbank_spread_widen_bps: 150
+  idiosyncratic_run:
+    withdrawal_velocity_multiplier: 6.0
+    margin_call_spike_pct: 120
+    interbank_spread_widen_bps: 200
+
+data_simulation:
+  history_days: 365
+  intraday_buckets_minutes: 15
+  seed: 42
+
+paths:
+  simulated_data: "data/simulated"
+  model_artifacts: "models/artifacts"
