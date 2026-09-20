@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Model selection decision tree</title>
+  <desc id="desc">A decision tree for selecting deterministic rules, classical statistics, expert buffers, or machine learning.</desc>
+  <rect width="1200" height="700" fill="#ffffff"/>
+  <g fill="#777777" font-family="Georgia, 'Times New Roman', serif" font-size="22" text-anchor="middle">
+    <text x="600" y="58">Is the relationship strictly deterministic,</text>
+    <text x="600" y="86">fixed by contract, or based on known rules?</text>
+
+    <text x="485" y="150" font-size="19">YES</text>
+    <text x="715" y="150" font-size="19">NO</text>
+
+    <text x="330" y="218" font-size="20">[Use Deterministic Rules / SQL]</text>
+
+    <text x="715" y="218">Is the data univariate,</text>
+    <text x="715" y="246">linear, or strictly periodic?</text>
+
+    <text x="615" y="306" font-size="19">YES</text>
+    <text x="815" y="306" font-size="19">NO</text>
+
+    <text x="430" y="374" font-size="20">[Use Classic Stats / ARIMA]</text>
+
+    <text x="815" y="374">Is sample size small,</text>
+    <text x="815" y="402">or data noisy/sparse?</text>
+
+    <text x="720" y="462" font-size="19">YES</text>
+    <text x="930" y="462" font-size="19">NO</text>
+
+    <text x="500" y="530" font-size="20">[Use Expert Buffers / Heuristics]</text>
+    <text x="935" y="530" font-size="20">[ML / Deep Learning Justified]</text>
+  </g>
+
+  <g fill="none" stroke="#999999" stroke-width="2">
+    <path d="M600 98 L485 136"/>
+    <path d="M600 98 L715 136"/>
+    <path d="M485 160 L330 198"/>
+    <path d="M715 160 L715 202"/>
+    <path d="M715 256 L615 292"/>
+    <path d="M715 256 L815 292"/>
+    <path d="M615 316 L430 354"/>
+    <path d="M815 316 L815 358"/>
+    <path d="M815 412 L720 448"/>
+    <path d="M815 412 L930 448"/>
+    <path d="M720 472 L500 510"/>
+    <path d="M930 472 L935 510"/>
+  </g>
+</svg>
